@@ -1,7 +1,11 @@
 import { Router, error, json } from 'itty-router'
 import { createCors } from 'itty-cors'
 
-const { preflight, corsify } = createCors()
+const { preflight, corsify } = createCors({
+  methods: ['POST'],
+  origins: ['*'],
+  maxAge: 3600
+})
 
 const router = Router()
 router.all('*', preflight)
